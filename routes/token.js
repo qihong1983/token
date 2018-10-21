@@ -37,7 +37,7 @@ router.post('/', bodyParser.json(), (req, res) => {
 
 	res.header("Access-Control-Allow-Origin", "*"); //设置跨域访问 
 
-
+	console.log(req.body);
 
 	// console.log(res.status(), 'ccc');
 
