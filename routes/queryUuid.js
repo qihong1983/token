@@ -23,6 +23,8 @@ connection.connect();
 
 router.post('/', bodyParser.json(), function(req, res, next) {
 
+
+	res.header("Access-Control-Allow-Origin", "*"); //设置跨域访问 
 	var sql = "SELECT * FROM `saotoken` WHERE uuid='" + req.body.uuid + "'";
 
 	connection.query(sql, function(err, result) {

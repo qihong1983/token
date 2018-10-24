@@ -26,7 +26,7 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 
 	//UPDATE table_name SET field1=new-value1, field2=new-value2
 
-
+	res.header("Access-Control-Allow-Origin", "*"); //设置跨域访问 
 
 	jwt.verify(auth, JWT_PASSWORD, (err, data) => {
 		if (err) {

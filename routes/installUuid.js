@@ -22,7 +22,7 @@ connection.connect();
 
 router.post('/', bodyParser.json(), function(req, res, next) {
 
-
+	res.header("Access-Control-Allow-Origin", "*"); //设置跨域访问 
 	//SQL语句
 	var sql = "INSERT INTO `saoyisao`.`saotoken` ( `uuid`) VALUES ('" + req.body.uuid + "')";
 
