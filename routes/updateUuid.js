@@ -28,7 +28,7 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 
 	res.header("Access-Control-Allow-Origin", "*"); //设置跨域访问 
 
-	jwt.verify(auth, JWT_PASSWORD, (err, data) => {
+	jwt.verify(req.body.token, JWT_PASSWORD, (err, data) => {
 		if (err) {
 			return res.status(401).json({
 				status: false,
