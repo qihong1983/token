@@ -59,7 +59,7 @@ router.post('/', bodyParser.json(), (req, res) => {
 				username: req.body.username
 			}, JWT_PASSWORD, {
 				expiresIn: 60 * 30
-					// expiresIn: '30 seconds'
+				// expiresIn: '30 seconds'
 			})
 		})
 	}

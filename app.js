@@ -12,6 +12,15 @@ var userKpireportList = require('./routes/kpireport/list');
 var openData = require('./routes/openData/data');
 var token = require('./routes/token');
 
+//插入 uuid
+var installUuid = require('./routes/installUuid');
+
+//更新 updateUuid
+var updateUuid = require('./routes/updateUuid');
+
+//查询 queryUuid 
+var queryUuid = require('./routes/queryUuid');
+
 
 
 let jwt = require('jsonwebtoken');
@@ -47,6 +56,13 @@ app.use('/user_kpireport_list', userKpireportList);
 app.use('/user_profile_list_open', openData);
 
 app.use('/token', token);
+
+
+app.use('/installUuid', installUuid);
+
+app.use('/updateUuid', updateUuid);
+
+app.use('/queryUuid', queryUuid);
 
 
 

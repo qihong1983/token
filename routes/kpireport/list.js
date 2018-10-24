@@ -33,9 +33,12 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 				msg: -1
 			})
 		} else {
+
+
 			res.json({
 				"status": true,
-				"msg": "返回成功",
+				"msg": "返回成功1123",
+				"username": data,
 				"data": [{
 					"id": 1,
 					"appCode": "ios",
