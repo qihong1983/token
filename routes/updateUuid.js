@@ -49,23 +49,23 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 	});
 
 
-	var sql = "update `saoyisao`.`saotoken` set token='" + req.body.token + "' where uuid='" + req.body.uuid + "'";
+	// var sql = "update `saoyisao`.`saotoken` set token='" + req.body.token + "' where uuid='" + req.body.uuid + "'";
 
-	connection.query(sql, function(err, result) {
-		if (err == null) {
-			res.json({
-				status: true,
-				msg: "执行成功"
-			})
-		} else {
-			res.json({
-				status: false,
-				msg: "执行失败"
-			})
-		}
+	// connection.query(sql, function(err, result) {
+	// 	if (err == null) {
+	// 		res.json({
+	// 			status: true,
+	// 			msg: "执行成功"
+	// 		})
+	// 	} else {
+	// 		res.json({
+	// 			status: false,
+	// 			msg: "执行失败"
+	// 		})
+	// 	}
 
-		// console.log(result);
-	});
+	// console.log(result);
+	// });
 
 });
 
