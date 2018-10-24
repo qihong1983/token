@@ -35,13 +35,40 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 				msg: -1
 			})
 		} else {
-			res.json({
-				"status": true,
-				"msg": "返回成功",
-				"data": {
-					token: data
+			// res.json({
+			// 	"status": true,
+			// 	"msg": "返回成功",
+			// 	"data": {
+			// 		token: data
+			// 	}
+			// })
+
+
+			var token = jwt.sign({
+				username: data.username
+			}, JWT_PASSWORD, {
+				expiresIn: 60 * 30
+				// expiresIn: '30 seconds'
+			});
+
+			var sql = "update `saoyisao`.`saotoken` set token='" + token + "' where uuid='" + req.body.uuid + "'";
+
+			connection.query(sql, function(err, result) {
+				if (err == null) {
+					res.json({
+						status: true,
+						msg: "执行成功"
+					})
+				} else {
+					res.json({
+						status: false,
+						msg: "执行失败"
+					})
 				}
-			})
+
+				console.log(result);
+			});
+
 		}
 
 
