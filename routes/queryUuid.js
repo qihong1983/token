@@ -35,17 +35,6 @@ function connect() {
 }
 
 
-
-// var connection = mysql.createConnection({
-// 	host: '39.106.140.80',
-// 	user: 'root',
-// 	password: 'Qihong38752673',
-// 	database: 'saoyisao'
-// });
-
-//执行创建连接 
-// connection.connect();
-
 var db;
 connect();
 

@@ -10,16 +10,32 @@ var JWT_PASSWORD = 'token';
 
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-	host: '39.106.140.80',
-	user: 'root',
-	password: 'Qihong38752673',
-	database: 'saoyisao'
-});
+function handleError(err) {
+	if (err) {
+		// 如果是连接断开，自动重新连接
+		if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+			connect();
+		} else {
+			console.error(err.stack || err);
+		}
+	}
+}
 
-//执行创建连接 
-connection.connect();
+// 连接数据库
+function connect() {
+	db = mysql.createConnection({
+		host: '39.106.140.80',
+		user: 'root',
+		password: 'Qihong38752673',
+		database: 'saoyisao'
+	});
+	db.connect(handleError);
+	db.on('error', handleError);
+}
 
+
+var db;
+connect();
 router.post('/', bodyParser.json(), function(req, res, next) {
 	//SQL语句
 	// var sql = "INSERT INTO `saoyisao`.`saotoken` ( `uuid`) VALUES ('" + req.body.uuid + "')";
@@ -53,7 +69,7 @@ router.post('/', bodyParser.json(), function(req, res, next) {
 
 			var sql = "update `saoyisao`.`saotoken` set token='" + token + "' where uuid='" + req.body.uuid + "'";
 
-			connection.query(sql, function(err, result) {
+			db.query(sql, function(err, result) {
 				if (err == null) {
 					res.json({
 						status: true,
